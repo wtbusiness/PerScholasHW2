@@ -1,8 +1,8 @@
 window.addEventListener("load", (e) => {
-  // Battle Ship ///////////////////////////////////////////////////////////////////////////
+  // This is the US battleship
 
   // Your Ship
-  class USS_Schwarzenegger {
+  class US {
     constructor() {
       this.hull = 20;
       this.firepower = 5;
@@ -10,19 +10,20 @@ window.addEventListener("load", (e) => {
     }
 
     attack() {
-      let rand = Math.random();
-      if (rand < this.accuracy) {
-        invader.hull -= this.firepower;
+      let randNum = Math.random();
+      if (randNum < this.accuracy) {
+        alienShip.hull -= this.firepower;
+        
         alert(
-          `YOUR ATTACK WAS SUCCESSFUL! \n\n PREPARE FOR INCOMING ATTACK...`
+          `YOU JUST TAGGED THEM! \n\n LET'S LOAD UP NOW...`
         );
       } else {
-        alert(`YOUR ATTACK FAILED! \n\n PREPARE FOR INCOMING ATTACK...`);
+        alert(`YOU GOT TAGGED! \n\n LET'S LOAD UP NOW...`);
       }
     }
   }
 
-  const defender = new USS_Schwarzenegger();
+  const earthDefender = new US();
 
   // Alien Ship
   class Alien {
@@ -32,9 +33,9 @@ window.addEventListener("load", (e) => {
       this.accuracy = Math.random() * (0.8 - 0.6) + 0.6;
     }
     attack() {
-      let rand = Math.random();
-      if (rand < this.accuracy) {
-        defender.hull -= this.firepower;
+      let randNum = Math.random();
+      if (randNum < this.accuracy) {
+        earthDefender.hull -= this.firepower;
         alert(`YOU'VE BEEN HIT!`);
       } else {
         alert(`NOT EVEN A SCRATCH!`);
@@ -42,57 +43,59 @@ window.addEventListener("load", (e) => {
     }
   }
 
-  const invader = new Alien();
+  const alienShip = new Alien();
 
   // Initiate Game
   const init = () => {
-    alert("Welcome to SPACE+++BATTLE!");
+    alert("Welcome to SPACE BATTLE!");
     const response = prompt(`Enter 'p' to play or 'q' to exit.`);
     if (response.toLowerCase() === "q") {
       alert(`Good-bye!`);
     } else if (response.toLowerCase() === "p") {
       alert(
-        "Earth has been attacked by a horde of aliens!\n\nYou are the captain of the USS Schwarzenegger.\n\nYour mission is to destroy every last alien ship."
+        "We have been attacked by a heap of aliens!\n\nYou are the commader of the US Space Team.\n\n Destroy all 6 alien ships or we will all be slaves or eaten."
       );
-      lockAndLoad();
+      loadUpAndFire();
     } else {
-      alert(`I don't understand your response.\n\nTry again next time!`);
+      alert(`Just type 'p' to play.\n\n We don't want to be defeated!`);
     }
   };
 
   // Check Status
   const status = () => {
     alert(
-      `Your Status >>> HULL: ${defender.hull} | FIREPOWER: ${
-        defender.firepower
+      `Your Status >>> HULL: ${earthDefender.hull} | FIREPOWER: ${
+        
+        
+        earthDefender.firepower
       } | ACCURACY: ${
-        defender.accuracy * 100
-      }%\n\nAlien#${invaderCount} Status >>> HULL: ${
-        invader.hull
-      } | FIREPOWER: ${invader.firepower} | ACCURACY: ${Math.floor(
-        invader.accuracy * 100
+        earthDefender.accuracy * 100
+      }%\n\nAlien#${alienCount} Status >>> HULL: ${
+        alienShip.hull
+      } | FIREPOWER: ${alienShip.firepower} | ACCURACY: ${Math.floor(
+        alienShip.accuracy * 100
       )}%`
     );
   };
 
   // Get Ready to Battle
-  invaderCount = 6;
+  alienCount = 6;
 
-  const lockAndLoad = () => {
+  const loadUpAndFire = () => {
     status();
 
-    while (invaderCount > 0) {
-      if (invader.hull < 1) {
-        invaderCount--;
+    while (alienCount > 0) {
+      if (alienShip.hull < 1) {
+        alienCount--;
       }
 
-      if (invaderCount > 0 && defender.hull > 0) {
-        invader.hull = Math.floor(Math.random() * (7 - 3) + 3);
-        invader.firepower = Math.floor(Math.random() * (5 - 2) + 2);
-        invader.accuracy = Math.random() * (0.8 - 0.6) + 0.6;
-      } else if (invaderCount < 1 && defender.hull < 1) {
+      if (alienCount > 0 && earthDefender.hull > 0) {
+        alienShip.hull = Math.floor(Math.random() * (7 - 3) + 3);
+        alienShip.firepower = Math.floor(Math.random() * (5 - 2) + 2);
+        alienShip.accuracy = Math.random() * (0.8 - 0.6) + 0.6;
+      } else if (alienCount < 1 && earthDefender.hull < 1) {
         return alert(`TIE GAME!`);
-      } else if (invaderCount < 1 && defender.hull > 0) {
+      } else if (alienCount < 1 && earthDefender.hull > 0) {
         return alert(`YOU HAVE DEFEATED ALL ALIENS`);
       } else {
         return alert(`YOU LOSE!`);
@@ -101,24 +104,49 @@ window.addEventListener("load", (e) => {
       const response = prompt(`Enter 'a' to attack or 'q' to retreat`);
       if (response.toLowerCase() === "q") {
         alert(`YOU LOSE!`);
-        defender.hull = 0;
-        defender.firepower = 0;
-        defender.accuracy = 0;
+        earthDefender.hull = 0;
+        earthDefender.firepower = 0;
+        earthDefender.accuracy = 0;
         status();
       } else if (response.toLowerCase() === "a") {
         engage();
       } else {
-        alert(`I don't understand your response.\n\n Try again!`);
+        alert(`Type "a" to attack or "q" to retreat .\n\n Try again!`);
       }
     }
   };
 
   // Battle
   const engage = () => {
-    defender.attack();
-    invader.attack();
-    lockAndLoad();
-  };
+    earthDefender.attack();
+    alienShip.attack();
+    loadUpAndFire();
+    reset();
 
-  init(); // Initialize
+  };
+   //init(); // Initialize
+   setTimeout(init, 1000);
 });
+
+
+// reset
+ const reset = () => {
+   const resetResp = prompt(
+     `Do you need to reset. If yes type 'y', if no type 'n'`
+   );
+
+   const noReset = alert(
+    `SORRY, WE CAN'T GO OUT LIKE THAT! PLAY AGAIN`
+   );
+   if (resetResp.toLowerCase() == "y") {
+     earthDefender.hull = 20;
+     earthDefender.firepower = 5;
+     earthDefender.accuracy = 0.07;
+     alienShip.hull = Math.floor(Math.random() * (7 - 3) + 3);
+     alienShip.firepower = Math.floor(Math.random() * (5 - 2) + 2);
+     alienShip.accuracy = Math.random() * (0.8 - 0.6) + 0.6;
+     engage();
+   } else {
+    alienCount > 0 && earthDefender.hull > 0;
+   }
+ };
