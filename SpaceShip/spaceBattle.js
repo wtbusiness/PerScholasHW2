@@ -99,6 +99,7 @@ window.addEventListener("load", (e) => {
         return alert(`YOU HAVE DEFEATED ALL ALIENS`);
       } else {
         return alert(`YOU LOSE!`);
+        
       }
 
       const response = prompt(`Enter 'a' to attack or 'q' to retreat`);
