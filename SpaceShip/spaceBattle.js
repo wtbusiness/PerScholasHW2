@@ -124,7 +124,7 @@ window.addEventListener("load", (e) => {
     reset();
 
   };
-   //init(); // Initialize
+  
    setTimeout(init, 1000);
 });
 
