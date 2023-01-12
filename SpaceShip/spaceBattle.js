@@ -35,7 +35,7 @@ window.addEventListener("load", (e) => {
     attack() {
       let randNum = Math.random();
       if (randNum < this.accuracy) {
-        earthDefender.hull -= this.firepower;
+        earthDefender.hull = earthDefender.hull - this.firepower;
         alert(`YOU'VE BEEN HIT!`);
       } else {
         alert(`NOT EVEN A SCRATCH!`);
@@ -136,18 +136,20 @@ window.addEventListener("load", (e) => {
      `Do you need to reset. If yes type 'y', if no type 'n'`
    );
 
-   const noReset = alert(
-    `SORRY, WE CAN'T GO OUT LIKE THAT! PLAY AGAIN`
-   );
+  //  const noReset = alert(
+  //   `SORRY, WE CAN'T GO OUT LIKE THAT! PLAY AGAIN`
+  //  );
    if (resetResp.toLowerCase() == "y") {
-     earthDefender.hull = 20;
-     earthDefender.firepower = 5;
-     earthDefender.accuracy = 0.07;
-     alienShip.hull = Math.floor(Math.random() * (7 - 3) + 3);
-     alienShip.firepower = Math.floor(Math.random() * (5 - 2) + 2);
-     alienShip.accuracy = Math.random() * (0.8 - 0.6) + 0.6;
-     engage();
+    window.location.reload();
+
+    //  earthDefender.hull = 20;
+    //  earthDefender.firepower = 5;
+    //  earthDefender.accuracy = 0.07;
+    //  alienShip.hull = Math.floor(Math.random() * (7 - 3) + 3);
+    //  alienShip.firepower = Math.floor(Math.random() * (5 - 2) + 2);
+    //  alienShip.accuracy = Math.random() * (0.8 - 0.6) + 0.6;
+    //  engage();
    } else {
-    alienCount > 0 && earthDefender.hull > 0;
+    window.close();
    }
  };
