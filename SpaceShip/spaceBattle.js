@@ -142,14 +142,14 @@ window.addEventListener("load", (e) => {
    if (resetResp.toLowerCase() == "y") {
     window.location.reload();
 
-    //  earthDefender.hull = 20;
-    //  earthDefender.firepower = 5;
-    //  earthDefender.accuracy = 0.07;
-    //  alienShip.hull = Math.floor(Math.random() * (7 - 3) + 3);
-    //  alienShip.firepower = Math.floor(Math.random() * (5 - 2) + 2);
-    //  alienShip.accuracy = Math.random() * (0.8 - 0.6) + 0.6;
-    //  engage();
+     earthDefender.hull = 20;
+     earthDefender.firepower = 5;
+     earthDefender.accuracy = 0.07;
+     alienShip.hull = Math.floor(Math.random() * (7 - 3) + 3);
+     alienShip.firepower = Math.floor(Math.random() * (5 - 2) + 2);
+     alienShip.accuracy = Math.random() * (0.8 - 0.6) + 0.6;
+     engage();
    } else {
-    window.close();
+    window.location.close();
    }
  };
