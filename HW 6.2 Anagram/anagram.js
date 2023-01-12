@@ -7,6 +7,8 @@
 // use a frequencyCounter no nested loops
 
 function validAnagram(str1, str2) {
+    str1 = str1.replace(/[^\w]/g, "").toLowerCase();
+    str2 = str2.replace(/[^\w]/g, "").toLowerCase();
 if(str1.length !== str2.length){
 return false;
 }
@@ -30,34 +32,9 @@ return true;
 
 }
  console.log(validAnagram('rail safety', 'fairy tales')) 
+ console.log(validAnagram('RAIL SAFETY!', 'FAIRY TALES!')) 
 
 
 
 
 
-
-// function maxChar(str) {
-//   const charFrequency = {};
-
-//   for (let char of str) {
-//     if (!charFrequency[char]) {
-//       charFrequency[char] = 1;
-//     } else {
-//       charFrequency[char]++;
-//     }
-//   }
-
-//   let maxChar = "";
-//   let maxFrequency = 0;
-
-//   for (let char in charFrequency) {
-//     if (charFrequency[char] > maxFrequency) {
-//       maxChar = char;
-//       maxFrequency = charFrequency[char];
-//     }
-//   }
-
-//   return maxChar;
-// }
-
-// console.log(maxChar("abcccccccd"));
