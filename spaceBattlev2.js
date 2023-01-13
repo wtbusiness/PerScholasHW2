@@ -2,17 +2,28 @@ window.addEventListener("load", (e) => {
   // This is the US battleship
 
   // Your Ship
+  const image = document.getElementById("space-img");
   class US {
     constructor() {
-      this.hull = 20;
+      this.hull = 200;
       this.firepower = 5;
-      this.accuracy = 0.7;
+      this.accuracy = 0.9;
     }
 
     attack() {
       let randNum = Math.random();
       if (randNum < this.accuracy) {
         alienShip.hull -= this.firepower;
+        image.removeChild(image.children[0]);
+        console.log(image.children[1]);
+
+        
+        //image.removeChild(image.children[0]);
+        // let i = 0;
+        // while(i < 6){
+        //     image.removeChild(image.children(i));
+        //     i++;
+        // }
 
         alert(`YOU JUST TAGGED THEM! \n\n LET'S LOAD UP NOW...`);
       } else {
@@ -78,7 +89,6 @@ window.addEventListener("load", (e) => {
   // Get Ready to Battle
   alienCount = 6;
 
-  while()
   const loadUpAndFire = () => {
     status();
 
@@ -88,6 +98,9 @@ window.addEventListener("load", (e) => {
         // shipImg.appendChild(img);
       if (alienShip.hull < 1) {
         alienCount--;
+        image.removeChild(image.children[0]);
+        console.log(image.children[0]);
+
       }
 
 
